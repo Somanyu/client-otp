@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 function FirstMenu() {
     return (
         <>
-            <h1 className="text-3xl font-bold underline text-blue-700">
-                First Menu
+            <h1 className="text-3xl font-bold text-black text-center">
+                Contact Info
             </h1>
 
             <div className='p-5'>
@@ -48,7 +48,8 @@ function FirstMenu() {
                                         {contact.phone}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <Link to={`/info/${contact.id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</Link>
+                                        {/* <Link to={`/info/${contact.id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</Link> */}
+                                        <a href={`/info/${contact.id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
                                     </td>
                                 </tr>
                             ))}
