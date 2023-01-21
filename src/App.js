@@ -2,6 +2,7 @@ import MainMenu from "./components/MainMenu";
 import FirstMenu from "./components/FirstMenu";
 import SecondMenu from "./components/SecondMenu";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ContactInfo from "./components/ContactInfo";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
           <Route path="/" element={<MainMenu />} />
           <Route path="/firstmenu" element={<FirstMenu />} />
           <Route path="/secondmenu" element={<SecondMenu />} />
+          <Route path="/info/:id" element={<ContactInfo />} />
         </Routes>
       </BrowserRouter>
     </>

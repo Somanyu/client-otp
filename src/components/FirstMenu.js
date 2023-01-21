@@ -1,4 +1,5 @@
 import contacts from '../json/contacts.json';
+import { Link } from 'react-router-dom';
 
 
 function FirstMenu() {
@@ -47,7 +48,7 @@ function FirstMenu() {
                                         {contact.phone}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="/" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
+                                        <Link to={`/info/${contact.id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</Link>
                                     </td>
                                 </tr>
                             ))}
