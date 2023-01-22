@@ -18,8 +18,8 @@ const ContactInfo = () => {
             .then(data => setContact(data))
             .catch(error => console.log(error));
     }, [id]);
-    // const contact = contacts.find(contact => contact.id === parseInt(id));
 
+    // Generating 6 digit random OTP.
     const random = Math.floor(100000 + Math.random() * 900000);
 
 
@@ -64,28 +64,29 @@ const ContactInfo = () => {
                                     Home
                                 </Link>
                             </div> */}
-                            <div class="flex flex-col items-center pb-10">
+                            <div class="flex flex-col items-center pb-10 font-inter">
                                 <img class="w-24 h-24 mb-3 mt-6 rounded-full" src={`https://api.dicebear.com/5.x/big-smile/svg?seed=${contact.firstName}`} alt={contact.firstName} />
                                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{contact.firstName} {contact.lastName}</h5>
                                 <span class="text-sm text-gray-500 dark:text-gray-400">{contact.phone}</span>
                                 {data ? (
-                                    <div id="alert-border-3" class="mt-7 transition ease-in-out m-auto max-w-sm flex p-4 text-green-700 bg-green-100 border-t-4 border-green-500 dark:text-green-400 dark:bg-gray-800" role="alert">
+                                    <div id="alert-border-3" class="font-inter mt-7 transition ease-in-out m-auto max-w-sm flex p-4 text-green-700 bg-green-100 border-t-4 border-green-500 dark:text-green-400 dark:bg-gray-800" role="alert">
                                         <div class="ml-3 text-sm font-medium">
                                             <span class="font-bold">{data.success}!</span> OTP sent to {contact.firstName}.
                                         </div>
                                     </div>
                                 ) : error ? (
-                                    <div id="alert-border-1" class="my-3 max-w-sm m-auto flex p-4 mb-4 text-red-700 bg-red-100 border-t-4 border-red-500 dark:text-red-400 dark:bg-gray-800" role="alert">
+                                    <div id="alert-border-1" class="font-inter my-3 max-w-sm m-auto flex p-4 mb-4 text-red-700 bg-red-100 border-t-4 border-red-500 dark:text-red-400 dark:bg-gray-800" role="alert">
                                         <div class="ml-3 text-sm font-medium">
                                             <span class="font-bold">{error}!</span> Try again.
                                         </div>
                                     </div>
                                 ) :
-                                    <div class="flex mt-4 space-x-3 md:mt-6">
+                                    <div class="flex mt-4 space-x-3 md:mt-6 font-inter">
                                         <form className='my-3'>
                                             <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Send OTP to {contact.firstName}</label>
                                             <div class="relative w-80 m-auto">
-                                                <input type="text" value={`Hi ${contact.firstName}, your OTP is: ${random}`} id="search-dropdown" class="block p-2 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
+                                                <input type="text" name="text" value={`Hi ${contact.firstName}, your OTP is: XXXXXX`} id="search-dropdown" class="block p-2 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
+                                                <input value={`${contact.phone}`} name="phone" type="text" className="bg-green-900 hidden" />
                                                 <button onClick={handleSubmit} type="submit" class="absolute top-0 right-0 p-2 text-xl font-medium text-blue-700 hover:text-blue-800 dark:text-blue-600 dark:hover:text-blue-700"><BsFillArrowRightCircleFill /></button>
                                             </div>
                                         </form>
