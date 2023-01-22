@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import 'flowbite';
+import Navbar from "./Navbar";
 
 
 const ContactInfo = () => {
@@ -54,10 +55,11 @@ const ContactInfo = () => {
         }
     }
     return (
-        <>
+        <div className='bg-white dark:bg-gray-900'>
+            <Navbar />
             {contact ? (
                 <div>
-                    <div className='flex justify-center mt-5'>
+                    <div className='flex justify-center mt-24 py-8'>
                         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                             {/* <div>
                                 <Link to="/firstmenu" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white hover:bg-gray-100  dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
@@ -69,7 +71,7 @@ const ContactInfo = () => {
                                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{contact.firstName} {contact.lastName}</h5>
                                 <span class="text-sm text-gray-500 dark:text-gray-400">{contact.phone}</span>
                                 {data ? (
-                                    <div id="alert-border-3" class="font-inter mt-7 transition ease-in-out m-auto max-w-sm flex p-4 text-green-700 bg-green-100 border-t-4 border-green-500 dark:text-green-400 dark:bg-gray-800" role="alert">
+                                    <div id="alert-border-3" class="font-inter mt-7 transition ease-in-out m-auto max-w-sm flex p-4 text-green-700 bg-green-100 border-t-4 border-green-500 dark:text-green-400 dark:bg-green-100" role="alert">
                                         <div class="ml-3 text-sm font-medium">
                                             <span class="font-bold">{data.success}!</span> OTP sent to {contact.firstName}.
                                         </div>
@@ -133,7 +135,7 @@ const ContactInfo = () => {
                 </div>
             )
             }
-        </>
+        </div>
     );
 }
 
