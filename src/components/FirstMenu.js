@@ -51,7 +51,7 @@ function FirstMenu() {
                 Contact Table
             </h1>
 
-            <div className='md:w-fit lg:w-3/5 sm:w-1/2 m-auto py-3'>
+            <div className='md:w-fit lg:w-3/5 sm:w-3/4 m-auto py-3'>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="font-karla text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
