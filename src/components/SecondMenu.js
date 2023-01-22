@@ -40,7 +40,7 @@ function SecondMenu() {
     return (
         <>
             <h1 className="text-3xl font-bold text-black text-center font-karla p-4">
-                Message List
+                OTP History
             </h1>
 
             <div className='p-5'>
