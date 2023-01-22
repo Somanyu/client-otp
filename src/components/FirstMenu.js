@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-import contacts from '../json/contacts.json';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
@@ -90,7 +88,6 @@ function FirstMenu() {
                                         {contact.phone}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {/* <Link to={`/info/${contact.id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</Link> */}
                                         <Link to={`/info/${contact.id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</Link>
                                     </td>
                                 </tr>

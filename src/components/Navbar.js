@@ -9,7 +9,6 @@ function Navbar() {
                 <nav class="p-3 border-gray-200 rounded bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                     <div class="container flex flex-wrap items-center justify-between mx-auto">
                         <Link to="/" class="flex items-center font-karla">
-                            {/* <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-10" alt="Flowbite Logo" /> */}
                             <MdPassword className='dark:text-white text-3xl mr-2' />
                             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">OTP Service</span>
                         </Link>

@@ -13,6 +13,7 @@ const ContactInfo = () => {
 
     let { id } = useParams();
 
+    // fetch request for user specific data using param.id
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -33,6 +34,7 @@ const ContactInfo = () => {
     }, [id]);
 
 
+    // fetch POST request to send OTP 
     const handleSubmit = (event) => {
         event.preventDefault();
         try {
@@ -54,6 +56,7 @@ const ContactInfo = () => {
             fetchData()
         } catch (error) {
             console.log(error);
+            setError(error)
         }
     }
 
@@ -79,11 +82,6 @@ const ContactInfo = () => {
                 <div>
                     <div className='flex justify-center mt-24 py-8'>
                         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                            {/* <div>
-                                <Link to="/firstmenu" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white hover:bg-gray-100  dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                                    Home
-                                </Link>
-                            </div> */}
                             <div class="flex flex-col items-center pb-10 font-inter">
                                 <img class="w-24 h-24 mb-3 mt-6 rounded-full" src={`https://api.dicebear.com/5.x/big-smile/svg?seed=${contact.firstName}`} alt={contact.firstName} />
                                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{contact.firstName} {contact.lastName}</h5>
@@ -110,7 +108,6 @@ const ContactInfo = () => {
                                                 <button onClick={handleSubmit} type="submit" class="absolute top-0 right-0 p-2 text-xl font-medium text-blue-700 hover:text-blue-800 dark:text-blue-600 dark:hover:text-blue-700"><BsFillArrowRightCircleFill /></button>
                                             </div>
                                         </form>
-                                        {/* <Link to="/firstmenu" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Back</Link> */}
                                     </div>
                                 }
                             </div>
