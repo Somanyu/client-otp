@@ -1,8 +1,18 @@
+/* eslint-disable no-unused-vars */
 import contacts from '../json/contacts.json';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 
 function FirstMenu() {
+    const [contacts, setContacts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/contact')
+          .then(res => res.json())
+          .then(data => setContacts(data));
+      }, []);
+      
     return (
         <>
             <h1 className="text-3xl font-bold text-black text-center">
