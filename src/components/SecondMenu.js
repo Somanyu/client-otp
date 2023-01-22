@@ -49,6 +49,9 @@ function SecondMenu() {
                         <thead class="font-karla text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
+                                    Avatar
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     First Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -63,6 +66,9 @@ function SecondMenu() {
                             {contacts.map(contact => (
 
                                 <tr key={contact.name} class="bg-white border-b font-inter dark:bg-gray-900 dark:border-gray-700">
+                                    <td class="px-6 py-4">
+                                        <img class="w-10 h-10 rounded-full" src={`https://api.dicebear.com/5.x/big-smile/svg?seed=${contact.name}`} alt={contact.name} />
+                                    </td>
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {contact.name}
                                     </th>
