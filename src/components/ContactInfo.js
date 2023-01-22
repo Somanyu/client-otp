@@ -1,7 +1,7 @@
-import contacts from '../json/contacts.json';
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import 'flowbite';
 
 
@@ -59,59 +59,77 @@ const ContactInfo = () => {
                 <div>
                     <div className='flex justify-center mt-5'>
                         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                            {/* <div>
+                                <Link to="/firstmenu" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white hover:bg-gray-100  dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                                    Home
+                                </Link>
+                            </div> */}
                             <div class="flex flex-col items-center pb-10">
                                 <img class="w-24 h-24 mb-3 mt-6 rounded-full" src={`https://api.dicebear.com/5.x/big-smile/svg?seed=${contact.firstName}`} alt={contact.firstName} />
                                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{contact.firstName} {contact.lastName}</h5>
                                 <span class="text-sm text-gray-500 dark:text-gray-400">{contact.phone}</span>
-                                <div class="flex mt-4 space-x-3 md:mt-6">
-                                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                                        Send
-                                    </button>
-                                    <Link to="/firstmenu" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Back</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                        <div class="relative w-full h-full max-w-md md:h-auto">
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                    <span class="sr-only">Close modal</span>
-                                </button>
-                                <div class="px-6 py-6 lg:px-8">
-                                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Send OTP to {contact.firstName} {contact.lastName}</h3>
-                                    {data ? (
-
-                                        <div id="alert-border-3" class="transition ease-in-out m-auto max-w-sm flex p-4 mb-4 text-green-700 bg-green-100 border-t-4 border-green-500 dark:text-green-400 dark:bg-gray-800" role="alert">
-                                            <div class="ml-3 text-sm font-medium">
-                                                <span class="font-bold">{data.success}!</span> OTP sent to {contact.firstName}.
-                                            </div>
+                                {data ? (
+                                    <div id="alert-border-3" class="mt-7 transition ease-in-out m-auto max-w-sm flex p-4 text-green-700 bg-green-100 border-t-4 border-green-500 dark:text-green-400 dark:bg-gray-800" role="alert">
+                                        <div class="ml-3 text-sm font-medium">
+                                            <span class="font-bold">{data.success}!</span> OTP sent to {contact.firstName}.
                                         </div>
-                                    ) : error ? (
-                                        <div id="alert-border-1" class="max-w-sm m-auto flex p-4 mb-4 text-red-700 bg-red-100 border-t-4 border-red-500 dark:text-red-400 dark:bg-gray-800" role="alert">
-                                            <div class="ml-3 text-sm font-medium">
-                                                <span class="font-bold">{error}!</span> Try again.
-                                            </div>
+                                    </div>
+                                ) : error ? (
+                                    <div id="alert-border-1" class="my-3 max-w-sm m-auto flex p-4 mb-4 text-red-700 bg-red-100 border-t-4 border-red-500 dark:text-red-400 dark:bg-gray-800" role="alert">
+                                        <div class="ml-3 text-sm font-medium">
+                                            <span class="font-bold">{error}!</span> Try again.
                                         </div>
-                                    ) :
-
-                                        <form class="space-y-6" action="#">
-                                            <div>
-                                                <input value={`Hi ${contact.firstName}, your OTP is: ${random}`} type="text" name="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
-                                                <input value={`${contact.phone}`} name="phone" type="hidden" />
+                                    </div>
+                                ) :
+                                    <div class="flex mt-4 space-x-3 md:mt-6">
+                                        <form className='my-3'>
+                                            <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Send OTP to {contact.firstName}</label>
+                                            <div class="relative w-80 m-auto">
+                                                <input type="text" value={`Hi ${contact.firstName}, your OTP is: ${random}`} id="search-dropdown" class="block p-2 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
+                                                <button onClick={handleSubmit} type="submit" class="absolute top-0 right-0 p-2 text-xl font-medium text-blue-700 hover:text-blue-800 dark:text-blue-600 dark:hover:text-blue-700"><BsFillArrowRightCircleFill /></button>
                                             </div>
-                                            <button onClick={handleSubmit} type="submit" class="max-w-sm m-auto block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Send text</button>
                                         </form>
-                                    }
-                                </div>
+                                        {/* <Link to="/firstmenu" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Back</Link> */}
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
 
             ) : (
-                <div>Loading....</div>
+                <div className='flex justify-center mt-5'>
+                    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+
+                        <div role="status" class="space-y-2.5 animate-pulse max-w-lg">
+                            <div class="flex items-center w-full space-x-2">
+                                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
+                                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            </div>
+                            <div class="flex items-center w-full space-x-2 max-w-[480px]">
+                                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                            </div>
+                            <div class="flex items-center mt-4 space-x-3">
+                                <svg class="text-gray-200 w-14 h-14 dark:text-gray-700" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                                <div>
+                                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
+                                    <div class="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center w-full space-x-2 max-w-[440px]">
+                                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-32"></div>
+                                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                            </div>
+                            <div class="flex items-center w-full space-x-2 max-w-[360px]">
+                                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )
             }
         </>
