@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import 'flowbite';
@@ -13,23 +12,26 @@ const ContactInfo = () => {
     const [contact, setContact] = useState(null);
 
     let { id } = useParams();
+
     useEffect(() => {
-        fetch(`http://localhost:3001/contact/info/${id}`)
-            .then(res => res.json())
-            .then(data => setContact(data))
-            .catch(error => console.log(error));
+        const fetchData = async () => {
+            try {
+                const res = await fetch(`http://localhost:3001/contact/info/${id}`);
+
+                const json = await res.json();
+                if (res.status === 200) {
+                    setContact(json)
+                } else {
+                    setError(json.message)
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
     }, [id]);
 
-    // Generating 6 digit random OTP.
-    const random = Math.floor(100000 + Math.random() * 900000);
-
-
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        })
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -53,6 +55,22 @@ const ContactInfo = () => {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    if (error) {
+        return (
+            <div className='bg-white dark:bg-gray-900'>
+                <Navbar />
+                <div className='w-1/2 m-auto px-5 py-52 font-inter'>
+                    <div id="alert-border-2" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+                        <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                        <div class="ml-3 text-sm font-medium">
+                            {error} try again or return to <a class="font-semibold underline hover:no-underline" href="/">home</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
     }
     return (
         <div className='bg-white dark:bg-gray-900'>
