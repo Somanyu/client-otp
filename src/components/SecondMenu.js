@@ -44,7 +44,7 @@ function SecondMenu() {
             </h1>
 
             <div className='p-5'>
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="relative overflow-x-auto md:w-5/6 lg:w-3/5 sm:w-5/6 m-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="font-karla text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
