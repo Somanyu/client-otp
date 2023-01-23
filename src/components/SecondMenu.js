@@ -17,7 +17,7 @@ function SecondMenu() {
  *
 */
     useEffect(() => {
-        fetch('http://localhost:3001/contact/getlist')
+        fetch('https://otp-server.onrender.com/contact/getlist')
             .then(res => {
                 if (!res.ok) {
                     throw new Error(res.statusText);

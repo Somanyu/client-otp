@@ -29,7 +29,7 @@ const ContactInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch(`http://localhost:3001/contact/info/${id}`);
+                const res = await fetch(`https://otp-server.onrender.com/contact/info/${id}`);
 
                 const json = await res.json();
                 if (res.status === 200) {
@@ -62,7 +62,7 @@ const ContactInfo = () => {
         event.preventDefault();
         try {
             async function fetchData() {
-                const res = await fetch("http://localhost:3001/contact/otp", {
+                const res = await fetch("https://otp-server.onrender.com/contact/otp", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'

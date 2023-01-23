@@ -19,7 +19,7 @@ function FirstMenu() {
  *
 */
     useEffect(() => {
-        fetch('http://localhost:3001/contact')
+        fetch('https://otp-server.onrender.com/contact')
             .then(res => {
                 if (!res.ok) {
                     throw new Error(res.statusText);
