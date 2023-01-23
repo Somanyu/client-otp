@@ -11,9 +11,21 @@ const ContactInfo = () => {
     const [error, setError] = useState(null);
     const [contact, setContact] = useState(null);
 
+    // value of the dynamic params from the current URL.
     let { id } = useParams();
 
-    // fetch request for user specific data using param.id
+/**
+ * useEffect hook makes a GET request to the "http://localhost:3001/contact/info/:id" endpoint
+ * to fetch user specific data.
+ *
+ * It uses the id passed as a parameter to fetch the user data.
+ *
+ * The hook uses the state setter function setContact to update the component's state with the returned data.
+ * In case of an error, it sets the error message to the state using setError state.
+ *
+ * The hook also handles network errors and non-200 status codes and shows an appropriate message to the user.
+ * 
+ */
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -34,7 +46,18 @@ const ContactInfo = () => {
     }, [id]);
 
 
-    // fetch POST request to send OTP 
+/**
+ * handleSubmit is a callback function that handles the submit event of a form.
+ * It makes a POST request to the "http://localhost:3001/contact/otp" endpoint to send an OTP.
+ *
+ * @param {Event} event - The event object that is passed to the function.
+ * 
+ * Upon successful submission, the function sets the returned data to the setData state.
+ * In case of an error, it sets the error message to the setError state.
+ * 
+ * The function also handles network errors and non-200 status codes and shows an appropriate message to the user.
+ * 
+ */
     const handleSubmit = (event) => {
         event.preventDefault();
         try {

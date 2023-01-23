@@ -6,6 +6,16 @@ function SecondMenu() {
     const [error, setError] = useState(null);
     const [reload, setReload] = useState(false);
 
+/**
+ * useEffect hook makes a GET request to the "http://localhost:3001/contact/getlist" endpoint
+ * to fetch OTP messages data that has been sent.
+ *
+ * The hook uses the state setContacts to update the component's state with the returned data.
+ * In case of an error, it sets the error message to the state using the setError state.
+ *
+ * The hook also handles non-200 status codes and shows an appropriate message to the user.
+ *
+*/
     useEffect(() => {
         fetch('http://localhost:3001/contact/getlist')
             .then(res => {
@@ -18,6 +28,11 @@ function SecondMenu() {
             .catch(err => setError(err.message));
     }, []);
 
+/**
+ * useEffect hook that listens to the reload state and reloads the page if the state is true.
+ *
+ * This can be used to reload the page when there is a server error or API error.
+*/
     useEffect(() => {
         if (reload) {
             window.location.reload();
